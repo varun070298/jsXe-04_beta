@@ -1,0 +1,32 @@
+# JSXE source view German properties file
+# $Id: messages.de,v 1.2 2006/02/16 21:29:20 ian_lewis Exp $
+# Maintained by Bianca Shöen
+#:mode=properties:
+#:tabSize=4:indentSize=4:noTabs=true:
+#:folding=explicit:collapseFolds=1:
+
+#{{{ Source View
+
+#{{{ Source View Options
+SourceView.Options.Title=Source View Optionen
+SourceView.Syntax.Object=Knoten Typ
+SourceView.Syntax.Style=Text Stil
+SourceView.Syntax.ToolTip=Dieses Tool erm�glicht es, den Font f�r verschiedene Knoten zu setzen.
+SourceView.ColorChooser.Title=Farbw�hler
+SourceView.Markup=Markup
+SourceView.Invalid=Ung�ltig
+#}}}
+
+#{{{ Style Editor
+SourceView.StyleEditor.Title=Stil Editor
+SourceView.StyleEditor.Color=Textfarbe
+SourceView.StyleEditor.Color.ToolTip=<HTML>Die Farbe dieses Knoten Typs kann hier ge�ndert werden. <BR>H�ckchen dieser Box entfernen setzten die Farbe zu schwarz zur�ck. <BR>Die rechteckige Box neben diesr Auswahl, kann<BR> benutzt werden um verschiedene Farben auszuw�hlen.</HTML>
+SourceView.StyleEditor.Bold=Fett
+SourceView.StyleEditor.Bold.ToolTip=schaltet Fettdruck an/aus
+SourceView.StyleEditor.Italics=Kursiv
+SourceView.StyleEditor.Italics.ToolTip=schaltet Kursivdruck an/aus
+
+#}}}
+
+#}}}
+

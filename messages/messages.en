@@ -1,0 +1,179 @@
+# JSXE English properties file
+# $Id: messages.en,v 1.22 2006/04/07 16:34:53 ian_lewis Exp $
+#:mode=properties:
+#:tabSize=4:indentSize=4:noTabs=true:
+#:folding=explicit:collapseFolds=1:
+
+#{{{ common properties
+
+common.ok=OK
+common.cancel=Cancel
+common.close=Close
+common.apply=Apply
+common.more=More
+common.insert=Insert
+common.add=Add
+common.remove=Remove
+common.moveUp=Move Up
+common.moveDown=Move Down
+common.cut=Cut
+common.copy=Copy
+common.paste=Paste
+common.find=Find...
+common.findnext=Find Next
+
+#}}}
+
+#{{{ XML Terminology
+
+#{{{ XML Node Types
+xml.element=Element
+xml.processing.instruction=Processing Instruction
+xml.cdata=CDATA Section
+xml.text=Text
+xml.entity.reference=Entity Reference
+xml.declaration=Element Declaration
+xml.notation=Notation
+xml.entity=Entity Declaration
+xml.comment=Comment
+xml.attribute=Attribute
+xml.doctype=Document Type
+#}}}
+
+xml.attribute.value.short=Value
+xml.attribute.value=Attribute Value
+xml.document=XML Document
+xml.namespace=Namespace
+xml.namespace.prefix=Namespace Prefix
+xml.namespace.prefix.short=Prefix
+xml.namespace.decl=Namespace Declaration
+xml.doctypedef=Document Type Definition
+xml.doctype.name=Name
+xml.doctype.public=Public Id
+xml.doctype.system=System Id
+xml.schema=XML Schema
+#}}}
+
+#{{{ Global Options
+Global.Options.Dialog.Title=Global Options
+Global.Options.Title=jsXe Global Options
+Global.Options.Max.Recent.Files=Recent files to remember:
+Global.Options.Max.Recent.Files.ToolTip=The maximum number of files that jsXe remembers in the recent files menu.
+Global.Options.network-off=Always cache without asking
+Global.Options.network-cache=Ask first, then cache remote files
+Global.Options.network-always=Always download without asking
+Global.Options.network=DTD and schema downloading:
+Document.Options.Title=XML Document Options
+Document.Options.Line.Separator=Line Separator:
+Document.Options.Encoding=Encoding:
+Document.Options.Encoding.ToolTip=The encoding that jsXe uses to write the file.
+Document.Options.Indent.Width=Indent width:
+Document.Options.Indent.Width.ToolTip=The width used when formatting and displaying tab characters.
+Document.Options.Format.XML=Format XML output
+Document.Options.Format.XML.ToolTip=If this box is checked then XML will be formatted automatically.
+Document.Options.Validate=Validate if DTD or Schema Available
+Document.Options.Validate.ToolTip=If this box is checked jsXe will validate the XML document.
+Document.Options.Soft.Tabs=Soft tabs (emulated with spaces)
+Document.Options.Soft.Tabs.ToolTip=If this box is checked then tab characters are replaced by spaces.
+#}}}
+
+#{{{ Menu Items
+
+File.Menu=File
+Edit.Menu=Edit
+View.Menu=View
+Tools.Menu=Tools
+Help.Menu=Help
+
+#{{{ File Menu Items
+File.New=New
+File.Open=Open...
+File.Recent=Recent Files
+File.Recent.None=No Recent Files
+File.Save=Save
+File.SaveAs=Save As...
+File.Reload=Reload
+File.Recent=Recent Files
+File.Close=Close
+File.CloseAll=Close All
+File.Exit=Exit
+#}}}
+
+Tools.Options=Options...
+Tools.Plugin=Plugin Manager...
+Tools.ValidationErrors=Validation Errors...
+Plugin.Manager.Title=Plugin Manager
+Help.About=About jsXe...
+#}}}
+
+#{{{ Messages
+DocumentBuffer.Reload.Message={0} unsaved!\n You will lose all unsaved changes if you reload!\n\nContinue?
+DocumentBuffer.Reload.Message.Title=Document Modified
+DocumentBuffer.SaveAs.Message=The file {0} already exists. Are you sure you want to overwrite it?
+DocumentBuffer.SaveAs.Message.Title=File Exists
+DocumentBuffer.Close.Message={0} unsaved! Save it now?
+DocumentBuffer.Close.Message.Title=Unsaved Changes
+
+#{{{ Error Messages
+No.Xerces.Error={0} not found. jsXe requires Apache {0}.
+No.Xerces.Error.Title={0} not found.
+IO.Error.Title=I/O Error
+#}}}
+
+#}}}
+
+#{{{ Dialogs
+
+#{{{ Download resource dialog
+xml.download-resource.title=Getting resource from remote server
+xml.download-resource.message=This XML file depends on a resource which is stored at the following\n\
+	Internet address:\n\
+	\n\
+	{0}\n\
+	\n\
+	Do you want the XML plugin to download the resource and cache it\n\
+	for future use?\n\
+	\n\
+	If you want resources to be downloaded every time without prompting,\n\
+	disable the resource cache in jsXe's global options.
+#}}}
+
+#{{{ Dirty Files Dialog
+DirtyFilesDialog.Dialog.Title = Unsaved Changes
+DirtyFilesDialog.Dialog.Message = The following files have unsaved changes:
+DirtyFilesDialog.Button.SelectAll.Title = Select All
+DirtyFilesDialog.Button.SelectAll.ToolTip = Select All
+DirtyFilesDialog.Button.SaveSelected.Title = Save Selected
+DirtyFilesDialog.Button.SaveSelected.ToolTip = Save Selected
+DirtyFilesDialog.Button.DiscardSelected.Title = Discard Selected
+DirtyFilesDialog.Button.DiscardSelected.ToolTip = Discard Selected
+#}}}
+
+#{{{ Activity Log Dialog
+ActivityLogDialog.Open = Activity Log
+ActivityLogDialog.Dialog.Title = Activity Log
+ActivityLogDialog.Dialog.Message = Activity Log contents:
+#}}}
+
+#{{{ About dialag
+about.title=About jsXe
+about.message=Released under the terms of the GNU General Public License\n\n\
+    Active Contributors:\n\
+    \ \ \ \ Ian Lewis <IanLewis@member.fsf.org>\n\
+    \ \ \ \ Trish Hartnett <trishah136@users.sourceforge.net>\n\n\
+    Translators:\n\
+    \ \ \ \ German (de) - Bianca Schoen\n\
+    \ \ \ \ Swedish (sv) - Patrik Johansson <patjoh@itstud.chalmers.se>\n\n\
+    Past Contributers:\n\
+    \ \ \ \ Aaron Flatten  <aflatten@users.sourceforge.net>\n\
+    \ \ \ \ Bilel Remmache <rbilel@users.sourceforge.net>\n\
+    \ \ \ \ SVM <svmcoranto@users.sourceforge.net>\n\n\
+    Homepage: http://jsxe.sourceforge.net/
+#}}}
+
+#{{{ Validation Errors Dialog
+ValidationErrors.title=Validation Errors
+ValidationErrors.message=Validation Errors
+#}}}
+
+#}}}

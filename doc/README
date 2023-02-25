@@ -1,0 +1,9 @@
+                      jsXe: Java Simple XML Editor
+
+jsXe is the Java Simple XML Editor. Although you may pronounce it any way you
+wish I encourage you to pronounce it "jay sexy". It is written in java using the
+Swing toolkit, JAXP, and DOM and is released under the terms of the GNU General
+Public License. It aims to provide end users and developers with an intuitive
+way of creating XML documents. It is geared towards simpler XML documents but
+will (eventually) be able to handle any XML document. Visit
+http://jsxe.sourceforge.net/ to learn more about this project.

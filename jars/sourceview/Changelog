@@ -1,0 +1,100 @@
+04/08/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed bug 1433905. I implemented end of line markers when I didn't need
+      to. And I implemented them wrong, introducing this bug.
+
+02/19/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed bug 1433918. The JEditTextArea now creates a new set of defaults
+      for each instance of JEditTextArea. Each new text area was using the same
+      InputHandler instance so the key bindings for each text area were being
+      overridden.
+
+02/11/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added end of line markers and and option to turn them on or off.
+    * Added support for maintaining indent when adding new lines
+    * Implemented maintaining indent when adding new lines and soft tabs
+      by adding key bindings to the input handler rather than overriding
+      processKeyEvent or whatever
+
+02/09/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed some syntax highlighting problems with DTDs that have internal
+      subsets.
+
+02/02/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added support for smart HOME/END. HOME and END will now
+      take you to the first/last non-whitespace characters.
+
+02/02/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added localized messages to the view. jsXe now supports views having their
+      own localized messages.
+
+01/30/2005  Ian Lewis   <Ian Lewis@member.fsf.org>
+
+    * Added the goToLine() method to SourceView to maintain the contract for
+      DocumentView
+
+05/18/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Enhanced the syntax highlighting to support highlighting namespace
+      prefixes and markup.
+    * The source view now highlights ]]> in text as invalid because it is.
+    * Fixed bug that caused attribute values to be highlighted incorrectly if
+      the attribute had different types of quotes in it. Like
+      value="blah='test'"
+
+05/10/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added an options panel for the source view that allows you to specify
+      colors that are used for syntax highlighting
+
+05/10/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed the soft tabs option, key mnemonics, and scrollbar after adding
+      syntax highlighting support.
+    * Fixed the find dialog after adding syntax highlighting
+    * Added a context menu to the source view. This allows you to execute the
+      actions in the edit menu from a right-click menu.
+
+05/10/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added syntax highlighting support
+
+04/28/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the options panel to conform to the new OptionsPanel interface in
+      jsXe core.
+
+04/27/2005 Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the text area to use a monospaced font.
+
+03/04/2005 version 0.3 pre15   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to work with jsXe 0.3 pre15
+
+02/16/2005 version 0.3 pre11   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to use the XMLDocument.IS_USING_SOFT_TABS property instead of
+      the sourceview SOFT_TABS property.
+
+01/08/2005 version 0.3 pre9    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated so that getVersion() works properly;
+
+01/05/2005 version 0.3 pre7    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to use new Plugin API
+    * Added a dialog to continue searching from the beginning of a file.
+
+12/13/2004  verison 0.3 pre2    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to use the build properties to get the plugin version
+
+12/12/2004  version 0.3 pre1    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the Source View to be a plugin

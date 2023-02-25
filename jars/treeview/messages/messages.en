@@ -1,0 +1,19 @@
+# JSXE tree view English properties file
+# $Id: messages.en,v 1.1 2006/02/02 20:49:56 ian_lewis Exp $
+#:mode=properties:
+#:tabSize=4:indentSize=4:noTabs=true:
+#:folding=explicit:collapseFolds=1:
+
+#{{{ TreeView
+TreeView.Options.Title=Tree View Options
+TreeView.Options.Show.Comments=Show comment nodes
+TreeView.Options.Continuous.Layout=Continuous layout for split-panes
+TreeView.Options.Show.Attributes=Show element attributes in tree:
+TreeView.RenameNode=Rename Node
+TreeView.RemoveNode=Remove Node
+TreeView.AddAttribute=Add Attribute
+TreeView.RemoveAttribute=Remove Attribute
+TreeView.EditNode=Edit Node
+TreeView.EditDocType.Title=Edit Document Type Definition
+Edit.Node.Dialog.Title=Edit Node
+#}}}

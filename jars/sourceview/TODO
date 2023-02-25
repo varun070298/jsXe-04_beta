@@ -1,0 +1,43 @@
+* Version 0.3 beta (Plugin Support)
+    
+* Version 0.4 beta (Actions)
+    
+    * Implement undo
+    
+    * Look at HistoryTextField and HistoryModel in jEdit. Use code from there
+      to implement a history text model for combo boxes in jsXe. Make use of
+      this in the find dialog and other dialogs.
+    
+* Version 0.5 beta (DTD support and Threading)
+    
+    * Add a feature that allows you to validate the document and moves the
+      cursor to the location of a parse/validation error in the source view.
+    
+* Version 0.6 beta (GUI focus)
+    
+    * Enhance the source view with element completion and other cool stuff. See
+      the XML plugin for jEdit for ideas. How would I display well-formedness
+      errors?
+        * Element completion
+        * Highlighting where a parse error is located. Is it feasable to do
+          multiple parses to find as many errors as possible? SAX parsers find
+          the first one and then quit.
+    
+    * Implement syntax highlighting.
+    
+* Version 0.7 beta
+    
+    * Build into the interfaces support for printing. Implement printing
+      support
+    
+* Version 0.8 beta
+
+    * Bug fixes?
+
+* Version 0.9 beta
+
+    * Bug fixes?
+
+* Version 1.0
+
+    * Bug fixes?

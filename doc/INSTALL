@@ -1,0 +1,61 @@
+REQUIREMENTS
+
+Java 1.4.2
+Xerces 2.6.2
+
+BUILDING jsXe FROM SOURCE
+
+This is pretty simple. You will need jakarta ANT and a Sun's javac compiler
+(others might work, I just haven't tested them). Also, in order for jsXe to
+compile properly you will need Apache Xerces installed.
+
+You should have 1.4.2 or better of java and you will need version 2.6.2 of
+Xerces. The jar files xercesImpl.jar and xml-apis.jar from the 2.6.2
+distribution are required. These should be placed in a directory called lib in
+jsXe's root folder (where you installed jsXe's source) or in the jre/lib/ext or
+lib/ext in your JVM. These jar files will be included with jsXe distributions
+for convenience.
+
+Simply typing 'ant' in jsXe's root directory will give you the available targets
+to use with ant. To just simply compile jsXe to a jar file you can type 'ant
+compile'. To build a binary distribution you will need to run the 'bin' target
+in the build.xml file. I do this by simply typing 'ant bin'. Source
+distributions can be built using the 'src' target by typing 'ant src'.
+
+A Xerces 2.6.2 binary distribution is not included in the CVS source tree. You
+can aquire the source at http://xml.apache.org/
+
+If building from CVS you will need to check out the default view plugins. These
+are located in the modules 'treeview' and 'sourceview'. Once you have the source
+trees for both of these you should put them in a directory called 'jars' in your
+jsXe root folder. Once they are in that folder, the ant targets (compile, bin,
+src, etc.) will recognise those plugins and build them if necessary.
+
+INSTALLING jsXe
+
+Unpack the distribution file wherever you like. Normally you would install it
+in  C:\Program Files\  or  /usr/local/share/  or something like that.
+
+RUNNING jsXe
+
+You should have 1.4.2 or better of java and you need 2.6.2 of Xerces.
+To run jsXe you should just run the java interpreter on the jsXe.jar file. There
+is a shell script or batch file included in the source tree for this purpose.
+
+    ./bin/jsXe.sh
+
+or
+
+    ./bin/jsXe.bat
+
+The batch program should be run in with the jsXe root directory of as the
+working directory. So you can create a shortcut to run jsXe by specifying the
+batch file as the program to run and jsXe's root directory as the working
+directory.
+
+Ex.
+Target:   "C:\Program Files\jsXe\bin\jsXe.bat"
+Start in: "C:\Program Files\jsXe\"
+
+You can also edit the JSXEDIR variable in the batch program to be the directory
+where you installed jsXe and then the 'Start in' directory can be anywhere.

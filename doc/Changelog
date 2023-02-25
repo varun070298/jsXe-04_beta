@@ -1,0 +1,1121 @@
+04/18/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Made some GUI tweaks to the splash screen.
+    * Made some tweaks to how the serializer formats XML Documents
+    * Fixed bug 1467968: Splitting CDATA tags doesn't work
+
+04/08/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Updated support for different encodings. Now jsXe will support all
+      encodings that the JVM being used supports. jsXe now opens documents
+      properly by examining the files for UTF file markers or the encoding
+      in the XML declaration. jsXe will now save files properly and write
+      the correct encoding in the xml declaration.
+    * Added built-in completion support for XML Schema, XHTML, XSLT, and XSL:FO
+
+04/07/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added a null menu item to the recent files menu for when there are
+      no recent files in the list.
+    * Added an option to allow the user to specify the line separator.
+
+03/16/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added a URI to the XMLDocument class to allow the XMLDocument to know
+      where the document is located.
+    * Added some framework for support introspection for built in document
+      types.
+
+02/06/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Updated to work with xerces 2.8.0
+
+02/19/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Released 0.4 pre3
+    * Fixed bug 143401802. BufferHistory now builds a dom and writes it out
+      using DOMSerializer which ensures that the document will be well-formed
+      and that special characters will be written out properly.
+    * Fixed bug 1434017. The dirty files dialog wasn't closing the dialog
+      properly when you save all the files.
+
+02/17/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed a bug where indeces weren't being kept properly when serializing a
+      document that was larger than the write buffer size.
+
+02/16/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed a bug in AdapterNode that allowed you to remove the root document
+      element node.
+    * Added a copy method to AdapterNode to facilitate copying nodes during
+      document editing.
+
+02/10/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Made a fix to XMLDocument to allow it to parse documents that
+      have multi-byte characters. The current implementation of the
+      ContentManagerInputStream is inadequate to deal with multi-byte
+      characters. The solution is to extract the document as a string and
+      parse it using a StringReader. This is a bit inefficient as the whole
+      document has to be copied into a String object but it will probably be
+      adequate for at least the immediate future since jsXe doesn't deal
+      _really_ well with large files anyway.
+
+02/09/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Disabled removing document type nodes
+    * Whenever requesting validation errors from an XMLDocument the document
+      will now check the validity of the document regardless of whether the
+      document itself has been changed because the DTD or Schema it is
+      validated againtst may have changed (e.g. in another open tab in jsXe).
+
+02/03/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added support for detecting a file's line separator and preserving it for
+      later during write.
+
+02/02/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * jsXe now allows plugins to specify their own localized messages. These
+      messages are stored in properties files in the plugin jar file under the
+      'messages' directory. The files are named identically to jsXe's messages
+      files (messages.en, messages.de).
+
+01/30/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * jsXe now shows the correct validation errors in the validation errors
+      dialog box.
+
+01/19/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed how external schema files are resolved.
+
+11/21/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed a number of bugs having to do with how and when the XML document
+      is parsed.
+
+11/09/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * The open file dialog now defaults to the directory specified in
+      the system parameter user.dir. This causes tho open file dialog to open
+      to the C:\Documents and Settings\user directory instead of the My
+      Documents directory in windows.
+
+11/01/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * XMLDocuments were marked as not synced with the document after they
+      were parsed in some cases. This caused the document to serialize itself
+      it some unnessary places and sometimes mark itself as dirty because of it.
+    * Fixed a bug where the Log file stream was being closed by the
+      ActivityLogDialog.
+    * Added a dialog that shows validation errors (though this may not be
+      working quite yet, I'm not sure I'm setting the parameters with Xerces
+      correctly).
+    * Fixed validation so that it returns correct error messages.
+
+10/26/2005 Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in the caching process that caused fatal IOExceptions to be
+      thrown.
+
+10/25/2005 Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the about dialog to get it's messages in a locale specific way.
+      Now the about dialog can be displayed in other languages.
+    * Added support for caching external files to the disk in the user's
+      settings directory. This should make load times faster for files with a
+      lot of external files. jsXe now requires the commons xml-commons resolver
+      jar file.
+
+10/24/2005 Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated how the splash screen gets updated on startup to make it
+      more active.
+    * Updated the activity log dialog to display the label as well as
+      the close/ok button better. Fixed the loading and saving of the geometry.
+      Added a default size to the default properties so that it doesn't
+      have a tiny size the first time it's opened.
+
+07/12/2005 Trish Hartnett <trishah136@users.sourceforge.net>
+	* Updated javadoc for ProgresSplashScreenWindow
+	
+07/09/2005 Trish Hartnett <trishah136@users.sourceforge.net>
+	* Added splash screen for jsXE startup
+	* Changed format of Activity Log Dialog so that buttons were arranged neater.
+
+07/02/2005  Trish Hartnett <trishah136@users.sourceforge.net>
+	* Added Activity Log menu option to the Help menu
+	* Edited jsXe so that when the DirtyFilesDialog appears, it's sized correctly
+
+07/01/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Released version 0.4pre2
+
+06/29/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Made some changes suggested by FindBugs.
+
+06/28/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Modified the DirtyFilesDialog to make it look a little bit better.
+        * Changed to use the BorderLayout better
+        * Changed to allow the JList to size itself correctly
+        * Changed from using 3 JPanels to using 1 and using the BorderLayout to
+          arrange the components
+        * Changed from using a JPanel to format the buttons to using a Box which
+          arranges the buttons closer to the way you want.
+    * Dirty files dialog doesn't show if there is only one dirty file.
+    * If you select all files in the dirty files dialog then choose save
+      selected and then cancel any save the dialog will no longer close. It will
+      remain open to prompt with what to do with the files you cancelled.
+    * Added some tooltip messages to the jsXe options menu and XML Document
+      options menu.
+    
+06/27/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Removed some NOTICES to the log in the DirtyFilesDialog since they aren't
+      necessary.
+    * Added some new NOTICEs to the Log
+
+06/21/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Updated jsXe so that it uses the DirtyFilesDialog when selecting
+      'Close All' from the File menu.
+    * Updated the DirtyFilesDialog so that it doesn't close until all files are
+      either saved or discarded.
+    * Updated DirtyFilesDialog so that it saves it's geometry to the properties
+      properly.
+    * Updated jsXe so that recent files information is saved even when closing
+      files through the DirtyFilesDialog
+
+06/20/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added Bianca Schoen to the about dialog for her contribution of a German
+      translation.
+    * Fixed bug that didn't mark the file as dirty when changing the indent
+      and formatting and soft indent were true.
+
+06/15/2005 Trish Hartnett <trishah136@users.sourceforge.net>
+	* Added tooltip texts for the checkboxes/scroll panes of the Options dialog box.
+
+06/13/2005 Trish Hartnett <trishah136@users.sourceforge.net>
+
+	* Added functionality to DocumentBuffer saveAs() method, so that the fileanme
+	  of the file in the buffer (e.g. Untitled-1), is the filename which appears in 
+	  the filename text field in the JFileChooser.
+	* Added variable confirmClose into method signature of DocumentBuffer close() 
+	  method. This variable is a flag. If it's set to true then the Dialog box 
+	  "Untitled -1 unsaved! Save it now?" does appear, else the code sirectly skips 
+	  to the DocumentBuffer save method. This was done because if a user clicks 
+	  "Save Selected" on the DirtyFilesDialog then there is no need to pop up another
+	  Dialog box saying "Untitled -1 unsaved! Save it now?", the user should instead 
+	  be immeadiately shown the JFileChooser.
+	* Changed method close in TabbedView. Previously this method called JSXE's 
+	  closeDocumentBuffer() method. This caused a series of Save Dialog boxes 
+	  (one for each unsaved edited file) to be produced. To get all the unsaved edited 
+	  files to be displayed in one dialog box, the TabbedView close method was edited 
+	  so that it creates an ArrayList of dirtyBuffers and these are sent as an argument 
+	  to the DirtyFilesDialog constructor.
+	* Further changed close method in TabbedView. Previously TabbedView.close() returned 
+	  true to the JSXE exit method. This allowed the exit() method in JSXE to continue. 
+	  I've changed TabbedView.close() so that it checks to see did the user select the 
+	  Cancel button in DirtyFilesDialog. If the user did (cancelFlag = true), the close() 
+	  method returns false to JSXE exit() method, causing the sequence of events required
+	  for the editor to close down to stop.
+	* Edited closeDocumentBuffer() method in JSXE. I wanted to be able to pass a boolean 
+	  into the DocumentBuffer.close() method which is called by JSXE. closeDocumentBuffer().
+	  See second point in list of changed for todays date. To pass the boolean variabe
+	  confirmClose into DocumentBuffer.close(), I had to first pass it into 
+	  JSXE.closeDocumentBuffer(). Rather than disturbling a lot of other code which used the 
+	  JSXE.closeDocumentBuffer() method, I overloaded this method, so that there was now 2 
+	  JSXE.closeDocumentBuffer() methods. The first has the same signature as the original 
+	  method. It calls the new version of the method, with confirmClose set to true. This is
+	  because the majority of methods which call JSXE.closeDocumentBuffer(), want the user to 
+	  be prompted to confirm whether they want to save the file before closing.
+	* DirtyFilesDialog is a class which produces a JDialog box which contains information about
+	  edited , unsaved files. DirtyFilesDialog provides functionality for selecting all files,
+	  discarding files, and saving files. It also has a Cancel button which the user can click
+	  if they don't want to exit the application.
+   *  net.sourceforge.jsxe.icons was updated to include a new file metal-Warn.png. This image
+      would be produced by default, if I had to choosen to build DirtyFilesDialog using a 
+      JOptionPane, but I decided to use a JDialog box instead, because it was easier to code.
+      So the warning symbol on the DirtyFilesDialog upperleft hand corner had to be added in 
+      manually.
+	
+05/30/2005  Ian Lewis <IanLewiS@member.fsf.org>
+
+    * Fixed bug that caused NullPointerExceptions to be thrown when editing
+      attributes of an element node.
+    * Fixed a bug that caused renaming an attribute to clear the value of the
+      attribute.
+
+05/18/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated how jsXe changes build versions into human readable versions so
+      that it works even after version 1.0 is released.
+
+05/13/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Rearranged how jsXe starts up to hopefully make it run faster.
+    * Added a check for the correct Xerces version.
+
+05/11/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug where user specific properties were being overwritten by
+      a plugin's default properties
+
+05/10/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added Swedish translation thanks to Patrik Johansson
+    * Some more buttons and menu's use Messages now
+
+05/08/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Made the recent files menu use the EnhancedMenu class.
+    * The BufferHistory now uses the canonical name of the file to store it's
+      location.
+    * Implemented the removeAll method in the EnhancedMenu class
+
+05/07/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused NullPointerExceptions when renaming Processing
+      Instruction nodes.
+    * Updated Messages to allow you to specify a directory to load from.
+    * Updated the build script to handle the messages file.
+
+05/06/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in CompletionInfo that caused NullPointerExceptions to be
+      thrown.
+    * Removed the hasSchema() method from XMLDocument because it was dumb
+    * Fixed a bug in AdapterNode.getAttributeAt(); Added the
+      getAttributeNameAt() method.
+    * Fixed several namespace bugs in the getters and setters for attributes in
+      AdapterNode
+
+05/01/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in XMLDocument with the hasCompletionInfo method.
+      Renamed it to hasSchema().
+    * Added the EnhancedMenu class that handles wrapping of the menu for you.
+
+04/29/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in XMLDocument that caused null pointer exceptions to be
+      thrown when setting the format XML option and the validation option
+      in the options at the same time.
+    * Added support for adding entity reference nodes to the document.
+
+04/28/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * getAllowedElements() in AdapterNode.java now sorts the elements
+    * Updated the OptionsPanel interface to remove the redundant saveOptions()
+      method
+    * Added node types to AdapterNode
+
+04/27/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added Trish to the About Dialog.
+    * jsXe no longer thinks the document is not well formed if the DTD/Schema
+      cannot be found. It is treated as a validation error.
+
+04/26/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Moved entityDeclared() from AdapterNode to XMLDocument
+    * Cleaned up and Documented some methods
+    * AdapterNode will now let you add entity nodes if the document is not
+      being validated.
+    * Updated Copyright info
+    * Added an Edit Tag Dialog for adding tags that are defined in a DTD/Schema
+
+04/21/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added a getActiveView() method to the jsXe class so that you can get
+      the active view for the program. This will be needed by plugins and
+      various other parts of jsXe.
+    * Updated some doc and cleaned up the API a bit (made jsXe and Log
+      constructors private)
+    * Added a getCharAt() method to the ContentManager in the XMLDocument. Will
+      use later.
+
+04/18/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated documentation.
+    * Removed a number of methods from MiscUtilities that were not needed or
+      were jEdit specific.
+    * Added a method to the AdapterNode class to allow you to get the document
+      that owns it.
+    * Added a method to XMLDocument to let you know if it has completion info
+      aquired from a DTD/Schema
+
+04/17/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * AdapterNodes can now report what nodes can be added to them as children
+      based on a DTD or schema.
+
+04/15/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Did some spring cleaning. Updated documentation in many classes. Updated
+      headers to correctly display copyrights and javadoc to correctly contain
+      authors.
+
+04/14/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added inactive code for storing completion info that is
+      retrieved from a DTD or Schema.
+    * XMLDocument now creates CompletionInfo objects to describe document
+      structures but jsXe doesn't use it yet.
+
+03/30/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Released 0.3 beta
+    * Added some more javadoc to XMLDocument
+    * Added some calls to syncContentWithDOM in XMLDocument
+    * Added validation option
+
+03/29/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated AdapterNode to make some methods private that were accidentally
+      marked public
+
+03/23/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Users can no longer remove namespace declarations when there are
+      attributes that use it.
+
+03/17/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Altered AdapterNode to support namespaces better. It handles adding and
+      removing namespace declarations much better.
+
+03/16/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug with the debug option in logging
+    * Added a command line option to enable printing debug to the command line.
+    * Fixed a bug in setModel() in XMLDocument
+
+03/13/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the getAdapterNode() method in XMLDocument to check if the
+      document is parsed and if not then attempt to go to parsed mode instead of
+      simply returning null when in non-parsed mode.
+
+03/09/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Released jsXe 0.3 pre15
+
+03/08/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added dependency checking for plugins.
+    * Added plugin error dialog
+
+03/04/2005  version 0.3 pre15   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added better error checking when loading plugins.
+    * Updated the plugin manager to look nicer. Needs a bit more work though.
+
+03/03/2005  version 0.3 pre14   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added some changes for dependency tracking of plugins.
+
+03/02/2005  version 0.3 pre13   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added logging functionality.
+
+03/01/2005  version 0.3 pre12   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Small additions to XMLDocument to prepare for DTD support.
+      Nothing to speak of.
+
+02/16/2005  version 0.3 pre11   Ian Lewis <IanLewis@member.fsf.org>
+
+    * jsXe now loads plugins from both ~/.jsxe/jars and the install
+      directory.
+    * Added the soft tabs property to the document options.
+
+01/18/2005  version 0.3 pre10   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added some new functionality for action plugins to add menu items
+      to the tools menu.
+    * Added a method to XMLDocument that allows you to get a copy of the
+      underlying Document object.
+
+01/08/2005  version 0.3 pre9    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Finished the plugin manager dialog.
+
+01/06/2005  version 0.3 pre8    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added the beginnings of a plugin manager dialog.
+
+01/05/2005  version 0.3 pre7    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Tweaked the plugin interface to eliminate some redundant methods.
+
+12/10/2004  version 0.3 pre6    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug that tried to create a new instance of a main class
+      even if the jar wasn't a plugin
+    * Updated logic to created the options panels for plugins
+    * Updated the XMLDocumentListener again
+
+12/08/2004  version 0.3 pre5    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the ant build document.
+    * jsXe now loads a plugin's properties
+    * Added support for ActionPlugins
+
+12/07/2004  version 0.3 pre4    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added view plugin support. Branched off the views into their own
+      source trees.
+    * Updated the Tree view to be a plugin
+
+11/30/2004  version 0.3 pre3    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added some more code for the SchemaView. jsXe will require JGraph for a
+      bit, until views become plugins and are moved into their own jars.
+    * Added some code for loading plugins
+    * Added new interfaces for the plugin API. The plugin API will have
+      ViewPlugins and ActionPlugins. ActionPlugins are plugins that add actions
+      to jsXe, ViewPlugins are plugins consisting of a view in the editor and
+      are themselves ActionPlugins.
+      
+11/24/2004  version 0.3 pre2    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Changed how the tree editor and renderers work so that the AdapterNode
+      doesn't have tree specific code in it.
+    * Fixed bug in the find and replace dialog that caused a null pointer
+      exception.
+    * Added an 'Ignore Case' Check box to the find dialog
+
+11/23/2004  version 0.3 pre1    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Obsoleted the DefaultViewTreeNode class.
+
+11/22/2004  version 0.2 beta    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Redid how the view human readable names are retrieved.
+    * Added preliminary support for the schema view (not enabled).
+
+10/8/2004   version 0.2 pre25   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug that didn't update the tab width for the source view when
+      you changed it in the options
+    * Fixed bugs where the menu bar wasn't updated properly when closing files
+      and changing views
+
+10/2/2004   version 0.2 pre24   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for properties to remember the size and layout of the
+      new options panel
+    * Fixed the reload fuctionality so that it truely reloads the file and
+      doesn't write the whole thing to a string object.
+    * Fixed a bug that kept files open too long by not closing the Reader
+      object used to read them.
+
+9/24/2004   version 0.2 pre23   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Changed the layout of the options dialog by taking some jEdit code.
+      Should be more flexable for adding different options categories etc. Not
+      to mention that it would look better.
+
+9/21/2004   version 0.2 pre22   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Documents opened directly into the source view are no longer formatted
+      automatically when the format-pretty-print property is true. This
+      prevents loading documents where whitespace matters without marking
+      them dirty.
+    * Views now remove listeners that they add to the DocumentBuffer
+    * Fixed bug that caused the document not to me marked dirty when it was
+      changed.
+
+8/25/2004   version 0.2 pre21   Ian Lewis <IanLewis@member.fsf.org>
+
+    * The serializer now ignores the element-content-whitespace parameter since
+      the parameter only makes sense when the document is validated by DTD or
+      Schema that specifies that an element MUST have only child elements
+      (element-content). Also if the DOM validates this info when being edited
+      then the serializer could never write out whitespace in element content
+      without invalidating the document. See
+      http://xml.apache.org/xerces2-j/javadocs/dom3-api/index.html Section 2.10
+    * Removed the whitespace in element content checkbox from the options since
+      it's ignored
+    * Removed the show whitespace only nodes check box since showing
+      whitespace only nodes in conjunction with formatting options makes
+      synchronization between options and the document difficult.
+    * Made the DocumentBuffer class extend XMLDocument so that there is one
+      class that deals with the document as a data model.
+
+8/19/2004   version 0.2 pre20   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug where the file is kept open by a reader or something too long.
+      This didn't allow other editors to open the document until jsXe is
+      closed or the objects are garbage collected.
+
+8/18/2004   version 0.2 pre19   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug with reloading a document in the source view.
+    * Fixed a bug that caused a document to be loaded dirty because the fact
+      that it was dirty was saved to the recent files list
+    * Added ability to create and edit processing instruction nodes
+
+8/12/2004   version 0.2 pre18   Ian Lewis <IanLewis@member.fsf.org>
+
+    * The OptionsPanel now extends the EnhancedDialog class. This makes it so
+      the Options dialog responds to the escape and enter keys.
+    * Fixed bug where when documents are opened but not viewed the split pane
+      locations in the default view are set to zero so when you open it the
+      next time the panes are messed up
+    * Added logic to start editing in the tree if the user starts typing while
+      one of the nodes is selected. It moves focus to the right hand pane
+      if necessary. It does, however, lose the first key when you start typing.
+    * The Move No Drop cursor is now displayed when dragging a node over a
+      drop target that rejects it.
+    * The SourceView search and replace dialog now closes if you change views.
+      The sourceview also reuses the dialog if it's open already when you hit
+      the find menu item.
+
+8/11/2004   version 0.2 pre17   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added back the replace field on the find and replace dialog in the
+      source view but this time it works!
+    * The source view now selects the text correctly in Linux when you do a
+      find without first setting focus to the text area.
+    * Removed the Find Next menu item since it doesn't work yet.
+    * Lengthened the max length of text displayed in the tree for a text node.
+
+08/10/2004  version 0.2 pre16   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Removed code in the TabbedView that assumed that the DocumentView was
+      the same reference as the document view component.
+    * Made the search dialog get the parent frame so it works better now.
+    * Removed the replace field since it doesn't work.
+
+07/30/2004  version 0.2 pre15   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added replace field to the search dialog.
+
+07/27/2004  version 0.2 pre14   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added a very preliminary search and replace dialog to the source view.
+      jsXe now requires the gnu.regexp package
+
+07/26/2004  version 0.2 pre13   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Implemented actions by putting them in ActionSets and having them be
+      registered with the jsXe application. This will allow implementation of
+      a feature to allow users to set key mnemonics (shortcuts) to actions
+      easier.
+    * Fixed a bug that caused jsXe to not allow you to open documents that
+      were not well formed.
+    * Implemented the soft-tabs feature in the source view.
+
+07/24/2004  version 0.2 pre12   Ian Lewis <IanLewis@member.fsf.org>
+
+    * The recent files menu now will form multiple consecutive menus if there
+      are a lot of recent files in the list.
+
+07/23/2004  version 0.2 pre11   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for a recent files list that can allow users to open
+      files they have recently used.
+    * Added an option to allow the user to specify the number of recent files
+      that jsXe remembers
+    * When jsXe opens a file now it checks if it's in the recent files list
+      and opens it with the remembered properties automatically
+
+06/23/2004  version 0.2 pre10   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed problem where the node did not appear to be selected after drag and
+      drop but was. Needed to add the node to the selection model.
+    * Removed references to the TabbedView from the DocumentViewFactory
+
+06/22/2004  version 0.2 pre9    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused the right hand text pane to clear when trying to
+      edit using it. When dragging and dropping a node the node stays selected
+      but is not highlighted however. This may be confusing to users.
+
+06/18/2004  version 0.2 pre8    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Made some changes to make the DefaultView less dependent on jsXe classes
+
+06/12/2004  version 0.2 pre7    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Removed references to the TabbedView and most jsXe application references.
+    * Fixed a bug that causing jsXe to not update the title properly when a
+      document was closed.
+
+06/08/2004  version 0.2 pre6    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused a null pointer exception when reloading an
+      untitled document.
+    * Changed the DocumentView interface to return a Component via a
+      method call instead of having it extend JPanel
+    * Fixed a bug that caused ArrayOutOfBounds exceptions to be thrown
+      sometimes when adding nodes via the JTree in DefaultView
+
+05/30/2004  version 0.2 pre5    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Removed references to the DocumentBuffer class in the DocumentView 
+      classes.
+
+05/26/2004  version 0.2 pre4    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Removed redundant call to fireNameChanged() in DocumentBuffer
+    * Moved code for setting the divider location of the split panes to an
+      overridden version of setVisible(). This allows the DefaultView to set
+      the divider locations after the parent container is made visible.
+
+05/23/2004  version 0.2 pre4    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Allowed users to add a comment node to the document root.
+    * fixed a bug that caused a processing instruction to not be printed on a
+      new line when serialized.
+
+05/23/2004  version 0.2 pre3    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added a new Reload action to the file menu so that users can reload the
+      current document from disk
+
+05/22/2004  version 0.2 pre2    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused non-dirty, non-untitled document to save when
+      they were closed.
+    * Added code for autoscrolling when doing drag and drop using the Autoscroll
+      interface and fuctionality.
+    * Added logic to expand tree nodes when you hover over them for a period of
+      time.
+    * Tooltip for processing instructions is now correct.
+    * Changed the text for some nodes in the tree.
+    * Changed versioning yet again so that we go 0.1.xx for build versions to
+      0.1 beta since 1 should be the first minor version we have a beta for.
+      Now 0.2 pre1 is the first development version preceding 0.2 beta, or
+      second minor release.
+
+05/18/2004  version 0.2 pre1    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Moved logic for the file chooser dialogs to a new jsxeFileDialog class
+
+05/17/2004  version 0.1 beta    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Code fixed for version 0.1 beta
+    * changed version naming scheme. Development versions are now the next
+      major.minor version with a preXX at the end (eg. 0.2 pre75). Mostly done
+      so it's easier to put the version in the build file and have it make
+      sense for beta/stable releases.
+
+05/16/2004  version 0.1.75  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed many bugs in the DefaultViewTreeModel, DefaultViewTree,
+      DefaultViewTreeNode, and AdapterNode
+    * Added code to remember the expanded states of nodes after they are
+      dragged and dropped into other nodes
+
+05/15/2004  version 0.1.74  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added xsd files to the file filters when opening a document.
+
+05/14/2004  version 0.1.73  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the DOMSerializer to implement the newest version
+      of the LSSerializer interface. jsXe requires Xerces 2.6.2.
+    * Updated how the splitpane locations are set up. The look better now and
+      and set themselves to a percentage of the window size as a starting
+      value.
+
+05/13/2004  version 0.1.72  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in the displaying of nodes in the tree. The algorithm
+      That desides if a node is to be displayed caused null pointer exceptions
+      to be thrown.
+    * Fixed various bugs. Moved logic for opening save dialogs to the
+      DocumentBuffer class.
+    * Fixed a bug in the inserting of nodes in the DefaultViewTreeNode class
+      The setParent method wasn't setting the correct parent.
+
+05/07/2004  version 0.1.71  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added a layer between the AdapterNode and the GUI. The DefaultViewTreeNode
+      class contains properties for use with the GUI. AdapterNode now doesn't
+      any GUI specific code in it.
+
+04/23/2004  version 0.1.70  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed some syncing problems with the XMLDocument and client classes
+      when the serialization process changes the structure of the document
+      by splitting cdata-section nodes.
+    * Fixed a bug that caused IndexOutOfBoundsExceptions to be thrown when
+      writing a document over 5120 bytes.
+    * Fixed a bug in the serializer that caused the root element opening tag
+      to be placed directly after a document type definition.
+    * updated how the DOMSerializer uses Writers. It uses them in a better way
+      now.
+
+04/23/2004  version 0.1.69  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that was causing comment nodes to indented too far
+      when formatting the document during serialization.
+    * Reworked the updatedMenuBar() method in the TabbedView so that
+      it doesn't create the whole menubar from scratch each time it's
+      updated.
+    * Fixed a bug in serialization that caused only the public id and not
+      the system id to be seraliazed if both existed in a doctype node.
+
+04/22/2004  version 0.1.68  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a build problem that was introduced into cvs.
+    * Fixed bug where jsxe generated NumberFormatExceptions if user defined
+      saved properties were incorrectly formatted.
+    * When a document is opened the document root element is now expanded
+      by default.
+    * When dragging and dropping and/or adding nodes the nodes that whose
+      locations have changed are always visible after the change.
+    * Added a Close All action to the file menu so that users can close all of
+      the open xml documents at once.
+    * Made it so that external dtds are not loaded since jsXe can't do anything
+      with them anyway.
+    * Implemented support for split-cdata-sections in the DOMSerializer
+
+04/21/2004  version 0.1.67  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Made it so that element nodes can't be edited in the JTree unless
+      you select 'Rename Node' from the context menu. This is done because of
+      some problems with compatiblity between the editing and drag and drop.
+    * The DefaultView now uses the default options set in the
+      documentview.default.props file. Any properties used by this class should
+      have default values set in this properties file.
+
+04/20/2004  version 0.1.66  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Made split panes in the default tree view one touch expandable.
+    * Made it so if opening a file and the only document open is untitled
+      and clean then jsXe closes it.
+
+04/18/2004  version 0.1.65  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Cleaned up some code in the TabbedView class. Removed the public update()
+      method.
+    * Changed some actions in the DefaultViewTree extend AbstractAction since
+      they will probobly have key mnemonics in the future.
+    * Added key mnemonics to the menu bar items so that you can navigate them
+      easier using the keyboard.
+
+04/17/2004  version 0.1.64  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added logic to the tree in the Default view so that dragged and dropped
+      nodes are always visible after a drop. New nodes that are added
+      through the context menu are also visible after they are added.
+    * Fixed support for cdata-sections in the DOMSerializer
+
+04/16/2004  version 0.1.63  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added logic to highlight a node when the user is going to drop onto a
+      particular node.
+
+04/04/2004  version 0.1.62  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed the problem where dragging an element node that was already
+      selected initiated editing for that node. That was kind of silly so
+      it doesn't do it any more.
+    * Fixed a problem in the serialization where characters weren't resolved
+      to entities in attributes
+
+04/03/2004  version 0.1.61  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a couple bugs that caused null pointer exceptions when inserting
+      around the document root.
+    * Fixed it so that when you drag off the tree the cue line is erased.
+
+04/02/2004  version 0.1.60  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added much better drag and drop support. You can now rearrange nodes
+      with ease. The relative location of the drop is used to determine
+      where to put the dragged node. Draws a line in between nodes in the
+      JTree when nodes will be inserted before or after a node.
+
+04/01/2004  version 0.1.59  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added an addAdaterNodeAt() method to the AdapterNode class so that
+      it would be possible to add better drag and drop functionality, Notably
+      being able to rearrange nodes within an element.
+    * Added some more fold marks and javadoc to several classes.
+    * Added the ability to rearrange text nodes and other nodes that aren't
+      elements around within an element.
+    * Added support for checking the version and getting command-line help
+      for jsXe via command-line options
+    * Fixed a bug that didn't allow users to open a document if the DTD couldn't
+      be found. Still won't think it's well formed though.
+
+03/31/2004  version 0.1.58  Ian Lewis <IanLewis@member.fsf.org>
+
+    * When you save out of the options panel after you changed options that
+      change the XML document itself the open document is marked as dirty.
+    * Fixed a bug where the source was not being changed when the encoding
+      was changed because the XMLDocument object thought that the source
+      was synced with the DOM.
+
+03/18/2004  version 0.1.57  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added check so that dragging and dropping a node on it's parent doesn't
+      do anything and the buffer is not marked dirty (since nothing really
+      changed).
+
+02/29/2004  version 0.1.56  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added preliminary drag n drop support for the tree in the default view.
+      You can now drag nodes from one parent to another in the tree view. You
+      can also drag a node to any thing that accepts text from a drag n drop
+      operation.
+
+02/27/2004  version 0.1.55  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Refactored the tree in the DefaultView to it's own class.
+    * Added in some preliminary drag n drop stuff. Commented out
+      so it will compile
+
+02/21/2004  version 0.1.54  Ian Lewis <IanLewis@member.fsf.org>
+
+    * DOCTYPE nodes are no longer visible in the tree. Some other method for
+      editing doc types will have to be added to jsXe later.
+
+02/16/2004  version 0.1.53  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug introduced in 0.1.51 that caused formatting not to work in
+      the source view and when saving.
+
+02/08/2004  version 0.1.52  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for writing the internal part of a DOCTYPE to the XML
+      document.
+
+02/07/2004  version 0.1.51  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Cleaned up the DOMSerializer and DOMSerializerConfiguration classes
+    * Added a flag to the DefaultXMLDocument class to tell if the DOM is synced
+      with the text content in parsed mode. Now it won't sync and thus serialize
+      the DOM to the content every time text is requested.
+
+01/23/2004  version 0.1.50  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for soft tabs in the DOMSerializer
+    * Fixed a bug with how AdapterNode keeps references to it's children.
+    * Added support for discarding default attributes in the DOMSerializer.
+
+12/21/2003  version 0.1.49  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed the icon that is rendered for a tree node when editing. Got some
+      weird behaviour out of the JTree when using the previous CellRenderer. I
+      created a new one that simply renders Element node icons since they are
+      the only editable nodes in the JTree.
+    * Updated the DOMSerializerConfiguration class to support all the DOM3 LS
+      parameters (even if the DOMSerializer itself doesn't yet).
+
+12/20/2003  version 0.1.48  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Merged some of Bilel's changes to AdapterNode making it better able to
+      handle more XML node types.
+    * Nodes in the default view tree are now rendered as different icons for
+      different node types. (Note: used icons from XML plugin for jEdit)
+
+12/19/2003  version 0.1.47  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a minor bug in the logic to update tab titles.
+    * jsXe now asks you if you really want to overwrite existing files on disk.
+
+12/18/2003  version 0.1.46  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Changed tabs to use icons instead of appending a '*' to the tab name to
+      indicate a file is dirty.
+    * Added javadoc to the AdapterNode class.
+    * Changed the security mode for the getNode() and setParentNode() methods
+      in AdapterNode from protected to default. All other classes should use
+      the public interface.
+
+12/16/2003  version 0.1.45  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in the attributes table where it wasn't updated properly.
+      It now updates properly and sorts based on the order in which they will
+      be serialized (alphabetical).
+    * Updated many of the interfaces to make them more OO like. Before,
+      DefaultView and TabbedView could be created but would have wierd default
+      values and relied on the user to initialize them with a document. Now an
+      initial document is required to construct them. This should be better for
+      reuse.
+    * Added a "Rename Node" action to the default view tree's context menu. You
+      can still rename it by clicking twice (not double clicking) on the element
+      node.
+
+12/14/2003  version 0.1.44  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the DOMSerializer and related classes to be compliant with the
+      latest version of the DOM3. So now jsXe requires Xerces 2.6.0.
+    * Fixed a bug where the html pane was editable after opening a new document
+      though no node was selected.
+
+11/19/2003  version 0.1.43  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug in the CustomFileFilter class that caused it to go into
+      an infinite loop with files with no extension.
+    * When opening an XML document jsXe now cycles through installed views
+      until it finds one that will open a document. This allows opening
+      documents that are not well formed in the source view.
+    * Added support for opening multiple files at a time. Fixed a few bugs
+      in that process.
+    * Fixed an EntityResolver bug that was introduced with the DocumentBuffer
+      class.
+
+11/15/2003  version 0.1.42  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Changed the XMLDocument and DefaultXMLDocument classes to handle insertion
+      and removal of raw text.
+    * DefaultXMLDocument now stores text in a ContextManager object much like
+      the way jEdit stores text. This should be more efficient and more scalable
+      to large files than storing the raw text in String object.
+    * Created a DocumentBuffer class to handle editor/application specific
+      things like the underlying file on disk, the name of the buffer, whether
+      it's dirty or not etc...
+    * Documents can now be serialized/written to disk even if they are not
+      well-formed (However, they still can't be opened).
+
+11/11/2003  version 0.1.41  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed problem where the tree in the default view allowed you to select
+      multiple nodes and cause undesired operation.
+
+11/10/2003  version 0.1.40  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug where the * dirty file indicator was going away when switching
+      views.
+    * Fixed a bug where a document was marked dirty when switching views.
+
+10/30/2003  version 0.1.39  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for dirty files. When you make changes to a document
+      it is marked dirty and has an '*' in the tab name. jsXe also asks you
+      if you want to save if you have dirty documents open.
+    * Fixed many miscellaneous bugs.
+    * AdapterNodes notify the XMLDocument parent when changes are made to the
+      DOM.
+
+10/23/2003  version 0.1.38  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused an error message and undesired behavior when
+      removing nodes.
+
+10/23/2003  version 0.1.37  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed the problem where the parser couldn't resolve the location
+      of an external entity. Made it so that the parser searched for
+      the entity relative to the document's path and not the path
+      where you started jsXe.
+    * Changed to new versioning system so that build versions and
+      major and minor version builds update jsXe's version automatically in
+      the build.properties.
+    * Changed SourceViewDocument to not update the XMLDocument's model each
+      time you insert text but set the text only after all editing is complete.
+      This improves performance but does not update the encoding when you change
+      it in the properties. Since I am going to change it so that you can't edit
+      the header in source view anyway, this isn't as much of an issue.
+
+10/20/2003  version 0.1.17  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added the ability to register listeners with the AdapterNode and
+      XMLDocument interfaces.
+    * Updated GUI classes to register listeners with the XMLDocuments and
+      update themselves when properties change.
+
+10/08/2003  version 0.1.16  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Made AdapterNodes persistent. Now the JTree functions like it
+      should when updateUI is called on it.
+
+09/07/2003  version 0.1.15  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Added functionality to the XMLDocument interface for adding listeners
+      so objects can be notified when the XML document changes.
+      Added an interface XMLDocumentListener. Documented it with javadoc.
+    * Fixed a bug that caused problems when saving as a file that was already
+      open. This was fixed earlier but the bug was reintroduced somewhere.
+
+9/01/2003   version 0.1.14  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Changed the XMLDocument validate() method to be checkWellFormedness().
+      Changed the implementation of isValidated() to be named isWellFormed() and
+      isWellFormed() now calls checkWellFormedNess to find out out whether it is
+      well-formed or not.
+
+8/31/2003   version 0.1.13  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Fixed bug with createElement() creating elements with a null local name
+      when element nodes are renamed. Used createElementNS() instead.
+    * Fixed performance issues with opening files (that weren't even that
+      large.)
+
+8/30/2003   version 0.1.12  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Fixed a very bad bug where jsXe was not writing anything to files when
+      saving because the OutputStreamWriter was not flushed.
+
+8/30/2003   version 0.1.11  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Added an indent width option to the options dialog. Currently only used
+      when formatting a document while serializing and as the tab width in the
+      source view.
+
+8/29/2003   version 0.1.10  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Fixed indentation when serializing a document.
+    * Changed the layout of the options dialog. It looks a little better now.
+
+8/28/2003   version 0.1.9  Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Changed the DOMSerializer class to conform to the DOM3 standard
+      DOMWriter (old) interface. Used the java.io.OutputStreamWriter class for
+      encoding. Added an encoding option to the option dialog.
+    * Fixed bug in DefaultXMLDocument that messed up which model the object was
+      using.
+    * Fixed bug with createElement() creating elements with a null local name.
+      Used createElementNS() instead.
+
+8/24/2003   version 0.1.7   Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Updated Serialization and options dialog.
+
+8/24/2003   version 0.1.6   Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Implemented more features for DOMSerializer.
+    * Updated the Options Dialog to have serialization options.
+
+8/18/2003   version 0.1.5   Ian Lewis  <IanLewis@member.fsf.org>
+
+    * Updated DOMSerializer to work with basic features and formatting.
+
+7/31/2003   version 0.1.4   Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Moved the DOMSerializer towards dom3 complience.
+
+7/21/2003   version 0.1.3   Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added javadoc to CustomFileFilter.java
+    * Updated the headers of all the files.
+    * Changed how jsXe saves files so that the XMLDocument class is independent
+      of gui implementation.
+    * Fixed a bug where jsXe didn't update the XMLDocument name in the
+      TabbedView.
+    * Fixed a bug that caused problems when saving as a file that was already
+      open.
+
+7/16/2003   version 0.1.2   Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added javadoc to jsXe.java and TabbedView.java. Added a context menu to
+      the attributes table so that attributes can be removed.
+
+07/09/2003  version 0.1.1   Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Initial Release. Simple functions are implemented for tree view, add
+      element and text nodes, remove nodes etc. Source view is a normal text
+      area with which you can edit the source of the XML document.

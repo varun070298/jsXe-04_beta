@@ -1,0 +1,28 @@
+#jsXe default properties
+max.recent.files=20
+
+# Enable network operations
+xml.network=true
+
+# Resource cache
+xml.cache=true
+
+#plugin manager default dimensions
+pluginmgr.x=100
+pluginmgr.y=100
+pluginmgr.height=300
+pluginmgr.width=400
+
+#Dirty Files Dialog default dimensions
+dirtyfiles.x=100
+dirtyfiles.y=100
+dirtyfiles.height=300
+dirtyfiles.width=500
+
+#Activity Log default dimensions
+activitylog.x=100
+activitylog.y=100
+activitylog.height=300
+activitylog.width=300
+
+

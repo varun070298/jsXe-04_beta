@@ -1,0 +1,27 @@
+# JSXE source view English properties file
+# $Id: messages.en,v 1.3 2006/02/16 21:29:20 ian_lewis Exp $
+#:mode=properties:
+#:tabSize=4:indentSize=4:noTabs=true:
+#:folding=explicit:collapseFolds=1
+
+#{{{ Source View
+
+#{{{ Source View Options
+SourceView.Options.Title=Source View Options
+SourceView.Options.EndOfLineMarker=End of line markers
+SourceView.Syntax.Object=Node Type
+SourceView.Syntax.Style=Text Style
+SourceView.ColorChooser.Title=Color Chooser
+SourceView.Markup=Markup
+SourceView.Invalid=Invalid
+#}}}
+
+#{{{ Style Editor
+SourceView.StyleEditor.Title=Style Editor
+SourceView.StyleEditor.Color=Text Color
+SourceView.StyleEditor.Bold=Bold
+SourceView.StyleEditor.Italics=Italics
+#}}}
+
+#}}}
+

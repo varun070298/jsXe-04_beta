@@ -1,0 +1,7 @@
+net.sourceforge.jsxe
+net.sourceforge.jsxe.action
+net.sourceforge.jsxe.dom
+net.sourceforge.jsxe.dom.completion
+net.sourceforge.jsxe.gui
+net.sourceforge.jsxe.options
+net.sourceforge.jsxe.util

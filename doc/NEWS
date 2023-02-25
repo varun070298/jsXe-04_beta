@@ -1,0 +1,349 @@
+04/25/2006  version 0.4 beta
+
+    * Updated to work with xerces 2.8.0 (jsXe now requires xerces 2.8.0)
+    * Updated support for different encodings. Now jsXe will support all
+      encodings that the JVM being used supports. jsXe now opens documents
+      properly by examining the files for UTF file markers or the encoding
+      in the XML declaration. jsXe will now save files properly and write
+      the correct encoding in the xml declaration.
+    * Added built-in completion and introspection support for XML Schema, XHTML,
+      XSLT, and XSL:FO
+    * Added a null menu item to the recent files menu for when there are
+      no recent files in the list.
+    * Added an option to allow the user to specify the line separator.
+    * Made some GUI tweaks to the splash screen.
+    * Made some tweaks to how the serializer formats XML Documents
+
+02/19/2006  version 0.4 pre3
+
+    * Added Activity Log menu option to the Help menu
+    * Added splash screen for jsXE startup
+    * Added support for caching external files to the disk in the user's
+      settings directory. This should make load times faster for files with a
+      lot of external files that are downloaded. jsXe now requires the commons
+      xml-commons resolver jar file.
+    * Added a dialog that shows a document's validation errors.
+    * The open file dialog now defaults to the directory specified in
+      the system parameter user.dir. This causes tho open file dialog to open
+      to the C:\Documents and Settings\user directory instead of the My
+      Documents directory in windows. This makes the open file dialogs
+      consistent.
+    * jsXe now allows plugins to specify their own localized messages. These
+      messages are stored in properties files in the plugin jar file under the
+      'messages' directory. The files are named identically to jsXe's messages
+      files (messages.en, messages.de).
+    * Added support for detecting a file's line separator and preserving it for
+      later during write. This preserves the correct line separator for a file.
+      This will added as an option later.
+    * Fixed a bug allow jsXe to parse documents that have multi-byte characters.
+    * Removed feature that when you type something it begins editing the
+      current node in the tree view. It would begin editing even if you typed
+      menu shortcut.
+    * Added a feature to add Document Type nodes. This is pretty basic but it
+      allows you to add new DOCTYPE nodes to the tree.
+    * Added cut/copy/paste support for nodes in the tree view. There are still
+      some limitations like the keyboard shortcuts don't work, and the actions
+      don't work when focused on the right hand side pane.
+    * Added support for smart HOME/END in the source view. HOME and END will now
+      take you to the first/last non-whitespace characters.
+    * Fixed some syntax highlighting problems with DTDs that have internal
+      subsets.
+    * Added end of line markers and and option to turn them on or off.
+    * Added support for maintaining indent when adding new lines
+
+07/01/2005  version 0.4 pre2
+
+    * Added Swedish translation thanks to Patrik Johansson
+    * Added German translation thanks to Bianca Schoen
+    * Better internationalization support
+    * Added a new option that allows you to show all attributes, just ID
+      attributes or no attributes in the tree.
+    * Added a new dialog when to allow a user to more easily save and discard
+      files when closing multiple dirty files. This is shown when exiting
+      jsXe or using the close-all action.
+    * Added support for showing choosing attribute values defined in the
+      Schema/DTD in the Attributes table.
+    * Fixed word wrapping in the right hand pane of the tree view
+    * Added syntax highlighting support in the source view
+        * You can set the colors used for syntax highlighting in the source
+          view options pane in the global options.
+    * Added a context menu to the source view. This allows you to execute the
+      actions in the edit menu from a right-click menu.
+      
+    * Fixed bug where user specific properties were being overwritten by
+      a plugin's default properties
+    * Added a check for the correct Xerces version.
+    * Added tooltip texts for the checkboxes/scroll panes of the Options dialog
+      box.
+    * Fixed bug that didn't mark the file as dirty when changing the indent
+      and formatting and soft indent were true.
+
+
+05/08/2005  version 0.4 pre1
+
+    * Added new support for validation
+        * Added support allowing allowed tag names to be derived from
+          DTD/Schema. Users can create a new node this way through a dialog
+          that knows the users
+    * Fixed several namespace bugs having to do with editing nodes with
+      namespaces
+    * Added support for adding entity reference nodes to the document.
+    * Added some support for internationalization. Some messages can be
+      overridden in the user's native language.
+    * Fixed a bug where the recent files menu would include a file twice.
+    * Fixed a bug where jsXe thought the document is not well formed if the
+      DTD/Schema could not be found. It is treated as a validation error.
+    * Fixed various other bugs.
+    
+03/30/2005  verison 0.3 beta
+
+    * Added much better namespace support. Users can no longer create
+      non-wellformed documents by changing namespaces.
+        * Users can no longer remove namespace declarations when there are
+          attributes that use it.
+    * Added a command line option to enable printing debug to the command line.
+
+03/09/2005  version 0.3 pre15
+
+    * Added plugin support. Now additional views can be added to jsXe easily
+      without recompiling. Plugins can set dependencies. If the plugin requires
+      a certain version of java, jsXe, or another plugin it can be specified
+      by the plugin writer.
+    * Added a plugin manager dialog to show information about loaded plugins.
+    * Fixed bug in the find and replace dialog that caused a null pointer
+      exception.
+    * Added an 'Ignore Case' Check box to the find dialog
+    
+11/23/2004  version 0.2 beta
+
+    * Fixed bug that didn't update the tab width for the source view when
+      you changed it in the options
+    * Fixed bugs where the menu bar wasn't updated properly when closing files
+      and changing views
+    * Fixed a bug that kept files open too long by not closing the Reader
+      object used to read them.
+    * Changed the layout of the options dialog by taking some jEdit code.
+      Should be more flexable for adding different options categories etc. Not
+      to mention that it would look better.
+    * Documents opened directly into the source view are no longer formatted
+      automatically when the format-pretty-print property is true. This
+      prevents loading documents where whitespace is matters without marking
+      them dirty.
+    * The serializer now ignores the element-content-whitespace parameter since
+      the parameter only makes sense when the document is validated by DTD or
+      Schema that specifies that an element MUST have only child elements
+      (element-content). Also if the DOM validates this info when being edited
+      then the serializer could never write out whitespace in element content
+      without invalidating the document. See
+      http://xml.apache.org/xerces2-j/javadocs/dom3-api/index.html Section 2.10
+    * Removed the whitespace in element content checkbox from the options since
+      it's ignored
+    * Removed the show whitespace only nodes check box since showing
+      whitespace only nodes in conjunction with formatting options makes
+      synchronization between options and the document difficult.
+
+8/19/2004   version 0.2 pre20   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug that caused a document to be loaded dirty because the fact
+      that it was dirty was saved to the recent files list
+    * The Move No Drop cursor is now displayed when dragging a node over a
+      drop target that rejects it.
+    * The SourceView search and replace dialog now closes if you change views.
+      The sourceview also reuses the dialog if it's open already when you hit
+      the find menu item.
+    * Fixed a bug that caused jsXe to not allow you to open documents that
+      were not well formed.
+    * Implemented the soft-tabs feature in the source view.
+    * Added a very preliminary search and replace dialog to the source view.
+      jsXe now requires the gnu.regexp package
+
+07/24/2004  version 0.2 pre12
+
+    * Added support for a recent files list that can allow users to open
+      files they have recently used.
+    * Added an option to allow the user to specify the number of recent files
+      that jsXe remembers
+    * When jsXe opens a file now it checks if it's in the recent files list
+      and opens it with the remembered properties automatically
+    * Fixed problem where the node did not appear to be selected after drag and
+      drop but was. Needed to add the node to the selection model.
+    * Fixed a bug that caused the right hand text pane to clear when trying to
+      edit using it. When dragging and dropping a node the node stays selected
+      but is not highlighted however. This may be confusing to users.
+    * Fixed a bug that causing jsXe to not update the title properly when a
+      document was closed.
+
+06/12/2004  version 0.2 pre6
+
+    * Fixed a bug that caused non-dirty, non-untitled document to save when
+      they were closed.
+    * Added code for autoscrolling when doing drag and drop using the Autoscroll
+      interface and fuctionality.
+    * Added logic to expand tree nodes when you hover over them for a period of
+      time.
+    * Tooltip for processing instructions is now correct.
+    * Added a new Reload action to the file menu so that users can reload the
+      current document from disk
+    * Allowed users to add a comment node to the document root.
+    * fixed a bug that caused a processing instruction to not be printed on a
+      new line when serialized.
+    * Fixed a bug that caused ArrayOutOfBounds exceptions to be thrown
+      sometimes when adding nodes via the JTree in DefaultView
+
+06/12/2004  version 0.1 beta
+
+    * Did some testing and fixed some miscellaneous bugs.
+    * changed version naming scheme. Development versions are now the next
+      major.minor version with a preXX at the end (eg. 0.2 pre75). Mostly done
+      so it's easier to put the version in the build file and have it make
+      sense for beta/stable releases.
+
+05/16/2004  version 0.1.75
+    
+    * Added code to remember the expanded states of nodes after they are
+      dragged and dropped into other nodes
+    * Added xsd files to the file filters when opening a document.
+    * Updated how the splitpane locations are set up. The look better now and
+      and set themselves to a percentage of the window size as a starting
+      value.
+    * Updated the DOMSerializer to implement the newest version
+      of the LSSerializer interface. jsXe requires Xerces 2.6.2.
+    * Fixed a bug in the serializer that caused the root element opening tag
+      to be placed directly after a document type definition.
+    * Fixed a bug in serialization that caused only the public id and not
+      the system id to be seraliazed if both existed in a doctype node.
+    * Fixed a bug that was causing comment nodes to indented too far
+      when formatting the document during serialization.
+    * When dragging and dropping and/or adding nodes the nodes that whose
+      locations have changed are always visible after the change.
+    * Added a Close All action to the file menu so that users can close all of
+      the open xml documents at once.
+    * Made it so that external dtds are not loaded since jsXe can't do anything
+      with them anyway.
+    * Implemented support for split-cdata-sections in the DOMSerializer. CDATA
+      nodes are now split when serializing so that they are valid when saved.
+    * Fixed bug where jsxe generated NumberFormatExceptions if user defined
+      saved properties were incorrectly formatted.
+    * Made it so that element nodes can't be edited in the JTree unless
+      you select 'Rename Node' from the context menu. This is done because of
+      some problems with compatiblity between the editing and drag and drop.
+    * Made split panes in the default tree view one touch expandable.
+    * Made it so if opening a file and the only document open is untitled
+      and clean then jsXe closes it.
+    * Added key mnemonics to the menu bar items so that you can navigate them
+      easier using the keyboard.
+
+04/17/2004  version 0.1.64
+
+    * Updated Drag and Drop to look nicer.
+    * When you save out of the options panel after you changed options that
+      change the XML document itself the open document is marked as dirty.
+    * Fixed a bug where the source was not being changed when the encoding
+      was changed because the XMLDocument object thought that the source
+      was synced with the DOM.
+    * Added the ability to rearrange text nodes and other nodes that aren't
+      elements around within an element in the tree view. The location where
+      the node will be dropped in the tree is highlighted.
+    * Added support for checking the version and getting command-line help
+      for jsXe via command-line options
+    * Fixed a bug that didn't allow users to open a document if the DTD couldn't
+      be found. Still won't think it's well formed though.
+    * Fixed a couple bugs that caused null pointer exceptions when inserting
+      around the document root.
+    * Added logic to the tree in the Default view so that dragged and dropped
+      nodes are always visible after a drop. New nodes that are added
+      through the context menu are also visible after they are added.
+
+03/18/2004  version 0.1.57
+
+    * jsXe now requires xerces 2.6.0. No other xerces release will work with
+      jsXe at this time.
+    * Fixed a bug where the html pane was editable after opening a new document
+      though no node was selected.
+    * Added a "Rename Node" action to the default view tree's context menu. You
+      can still rename it by clicking twice (not double clicking) on the element
+      node.
+    * Fixed a bug in the attributes table where it wasn't updated properly.
+      It now updates properly and sorts based on the order in which they will
+      be serialized (alphabetical).
+    * Changed tabs to use icons instead of appending a '*' to the tab name to
+      indicate a file is dirty.
+    * jsXe now asks you if you really want to overwrite existing files on disk.
+    * Nodes in the default view tree are now rendered as different icons for
+      different node types. (Note: used icons from XML plugin for jEdit)
+    * Added support for writing the internal part of a DOCTYPE to the XML
+      document when saving and using source view.
+    * DOCTYPE nodes are no longer visible in the tree. Some other method for
+      editing doc types will have to be added to jsXe later.
+    * Added preliminary drag n drop support for the tree in the default view.
+      You can now drag nodes from one parent to another in the tree view. You
+      can also drag a node to any thing that accepts text from a drag n drop
+      operation.
+
+11/23/2003  version 0.1.43
+
+    * jsXe can now open more than one file at a time.
+    * jsXe can now open and save files that are not well-formed.
+    * Fixed bug where jsXe would only open the first file given several files
+      on the command line.
+    * Fixed bug where the * dirty file indicator was going away when switching
+      views.
+    * Fixed a bug where a document was marked dirty when switching views.
+    * Fixed problem where the tree in the default view allowed you to select
+      multiple nodes and cause undesired operation.
+
+10/30/2003  version 0.1.39
+
+    * Added support for dirty files. When you make changes to a document
+      it is marked dirty and has an '*' in the tab name. jsXe also asks you
+      if you want to save if you have dirty documents open.
+    * Fixed a bug that caused an error message and undesired behavior when
+      removing nodes.
+    * Fixed many miscellaneous bugs.
+
+10/23/2003  version 0.1.37
+
+    * Fixed the problem with jsXe not finding DTD documents and other external
+      entities.
+    * jsXe now updates the interface more after you change a document's options.
+    * Fixed the problem with the tree view collapsing after adding new nodes
+      or changing some nodes.
+    * Fixed a bug that caused problems when saving as a file that was already
+      open. This was fixed earlier but the bug was reintroduced somewhere.
+    * Changed to a new version system where the build version is updated
+      automatically. This means the build version will get higher faster.
+    * Fixed some other bugs.
+
+08/31/2003  version 0.1.13
+
+    * Fixed another nasty bug with createElement() creating elements with a
+      null local name when element nodes are renamed. Used createElementNS()
+      instead.
+    * Fixed performance issues with opening files (that weren't even that
+      large.)
+
+08/30/2003  version 0.1.12
+
+    * Fixed a very nasty bug that caused jsXe to save blank files.
+
+08/30/2003  version 0.1.11
+    
+    * jsXe has some more options. The options are specific to each open XML
+      Document. These include the an encoding drop down box and the ability to
+      format XML output.
+
+    * Several enhancements have been made to serialization of XML documents.
+      This allows for better looking and more flexable saved documents and
+      source.
+
+    * Fixed a bug that caused uncaught exceptions when saving a file as an
+      already open file.
+
+    * Fixed a bug when writing files that causes characters like < > ' to not
+      be written properly.
+
+07/09/2003  version 0.1.1
+
+    * Initial Release. Simple functions are implemented for tree view, add
+      element and text nodes, remove nodes etc. Source view is a normal text
+      area with which you can edit the source of the XML document.

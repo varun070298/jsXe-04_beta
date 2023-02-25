@@ -1,0 +1,179 @@
+02/16/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added cut/copy/paste support for nodes in the tree view. There are still
+      some limitations like the keyboard shortcuts don't work, and the actions
+      don't work when focused on the right hand side pane.
+
+02/09/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Fixed bug where adding a DTD node was shown as an option for element
+      nodes.
+    * Updated the edit DTD node dialog
+
+02/02/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added localized messages to the view. jsXe now supports views having their
+      own localized messages.
+
+01/30/2006  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added the goToLine() method to DefaultView to maintain the contract for
+      DocumentView
+
+11/21/2005  Ian Lewis   <IanLewis@member.fsf.org>
+
+    * Added a rudamentary way to add a DOCTYPE node. You add one by right
+      clicking on the document node in the tree and adding it like any other
+      node. However, adding a doc type definition displays a dialog where
+      users enter the name, public id and system id. Under the covers, the
+      DOCTYPE is added to the document as text and the document is reparsed.
+      This is done because the DOM doesn't allow editing of DOCTYPE nodes and
+      thus jsXe's interface isn't able to support it at the moment. jsXe may
+      support it in the future using this method though.
+
+10/26/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Removed feature that when you type something it begins editing the
+      current node. It would begin editing even if you typed menu shortcut or
+      something.
+
+06/28/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Set the name of components so that they can be used in test scripts
+
+06/20/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Changed the text area for editing node values from a JEditorPane to a
+      JTextArea and set the line wrap policy to false so that word wrapping
+      doesn't occur. JEditorPane was wrapping lines very strangely.
+
+06/16/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug where a processing instruction node's icon was not rendered
+      correctly when being edited.
+
+06/15/2005 Trish Hartnett <trishah136@users.sourceforge.net>
+     
+    * Added tooltip texts for the checkboxes/scroll panes of the Options dialog box.
+
+05/30/2005  Ian Lewis <IanLewiS@member.fsf.org>
+
+    * Fixed bug that caused NullPointerExceptions to be thrown when editing
+      attributes of an element node.
+    * Fixed a bug that caused renaming an attribute to clear the value of the
+      attribute.
+
+05/20/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Cleaned up the code a bit so I don't have duplicate classes.
+    * Removed the empty check box from the edit node dialog since it didn't do
+      anything anyway.
+
+05/19/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for showing choosing attribute values defined in the
+      Schema/DTD in the Attributes table.
+
+05/15/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for showing ID type attributes in the tree.
+    * Added a new option that allows you to show all attributes, just ID
+      attributes or no attributes in the tree.
+
+05/12/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Using messages in a few more places now.
+
+05/09/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * The context menu now uses the common.add message
+
+05/09/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed bug where the context menu wouldn't show for Processing Instruction
+      and Comment Nodes outside of the root element.
+
+05/06/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed a bug where the tree view was catching NullPointerExceptions when
+      it shouldn't have
+    * The tree now shows the schema completion info.
+    * Moved actions adding attributes and removing attributes into their own
+      file
+
+05/01/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * using the EnhancedMenu class in the tree view now.
+
+04/29/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added support for adding entity reference nodes to the tree.
+
+04/28/2005  Ian Lewis <IanLewis@member.fsf.org>
+    
+    * Updated the options panel to conform to the new OptionsPanel interface in
+      jsXe core.
+    * Made add, remove, and rename node actions into their own files and added
+      them as actions for this plugin.
+
+04/27/2005   Ian Lewis <IanLewis@member.fsf.org>
+
+    * The Add Element context menu when using a DTD/Schema now has a 'More' menu
+      that expands the menu.
+    * Updated the EditTagDialog to use the Messages class
+    * Changed the text pane to use a monospaced font
+
+04/26/2005   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added an Edit Tag Dialog to edit elements defined in an XML Schema.
+
+04/18/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the context menu for the tree to not allow you to invalidate
+      a document by adding a new node that isn't in the completion info.
+
+04/17/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated the context menu to add elements to show elements that are
+      allowed as children based on the DTD/Schema
+
+03/30/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Fixed problem with entering new attributes after you reverse the order
+      of the columns.
+
+03/17/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Added much better namespace support.
+        * Requires jsXe 0.3.16 now
+    * Added support for adding attributes where a value is required
+
+03/08/2005  Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to work with jsXe's new plugin dependency checking.
+
+03/04/2005  version 0.3 pre15   Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to work with jsXe 0.3 pre15
+
+01/08/2005  version 0.3 pre9    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated so that getVersion() works properly;
+
+01/05/2005  version 0.3 pre7    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated for new plugin API
+
+12/13/2004  version 0.3 pre3    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to use the build properties to get plugin version
+
+12/10/2004  version 0.3 pre2    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Updated to support slightly modified version of XMLDocumentListener
+    * Updated XMLDocumentListener again
+    * Odded support for displaying the Options Panel in the general options
+
+12/07/2004  version 0.3 pre1    Ian Lewis <IanLewis@member.fsf.org>
+
+    * Split the tree view to it's own source tree now that it's a plugin.

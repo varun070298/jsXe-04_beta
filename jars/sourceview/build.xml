@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     This is a build.xml file for building the Source View for jsXe.
+     Version: $Id: build.xml,v 1.14 2006/02/02 20:52:58 ian_lewis Exp $
+-->
+<project basedir="." default="usage" name="sourceview">
+	
+  <description>Source View for jsXe</description>
+  
+  <!-- {{{ ============ Initializes properties and variables ============= -->
+	<target name="init">
+		<tstamp/>
+		<property name="app.name" value="sourceview"/>
+    <property name="readable.name" value="Source View"/>
+    <property name="description" value="Edit an XML document's source"/>
+		<property name="root.dir" value="."/>
+    <property name="build.dir" value="${root.dir}/build"/>
+    <property name="messages.dir" value="${root.dir}/messages"/>
+    <property name="build.messages" value="${build.dir}/messages"/>
+		<property name="src.dir" value="${root.dir}/src"/>
+		<property name="docs.dir" value="${src.dir}/doc"/>
+		<property name="build.src" value="${build.dir}/src"/>
+		<property name="build.dest" value="${build.dir}/classes"/>
+		<property name="build.docs" value="${build.dir}/doc"/>
+		<property name="build.javadocs" value="${build.docs}/api"/>
+		<property name="build.help" value="${build.docs}/help"/>
+    <property name="jsxe.dir" value="${root.dir}/../.."/>
+    <property name="jsxe.jar" value="${jsxe.dir}/jsXe.jar"/>
+		<property name="javac.debug" value="on"/>
+		<property name="javac.optimize" value="off"/>
+		<property name="javac.deprecation" value="on"/>
+    <property name="javac.include.runtime" value="no"/>
+    <property name="javac.source" value="1.3"/>
+		<property name="javadoc.link" value="http://java.sun.com/j2se/1.3/docs/api/"/>
+    <property name="main.class" value="sourceview.SourceViewPlugin"/>
+		<property name="major.version" value="0"/>
+		<property name="minor.version" value="4"/>
+		<property name="build.version" value="3"/>
+		<property name="app.version" value="${major.version}.${minor.version}.${build.version}"/>
+		<property name="app_version" value="${major.version}_${minor.version}_${build.version}"/>
+        <property name="implementation.version" value="${major.version}.${minor.version}.${build.version}"/>
+		<property name="distbin.dir" value="${build.dir}/${app.name}-${app_version}-bin"/>
+		<property name="distsrc.dir" value="${build.dir}/${app.name}-${app_version}-src"/>
+		<path id="classpath">
+			<pathelement location="${root.dir}"/>
+			<pathelement location="${build.dest}"/>
+			<pathelement location="${build.src}"/>
+			<pathelement location="${src.dir}"/>
+      <pathelement location="${jsxe.jar}"/>
+		</path>
+		<echo message="${readable.name} ${app.version}"/>
+		<echo message="----------------------------------------------------------"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Prints the available targets ===================== -->
+	<target depends="init" name="usage" description="Prints available targets">
+		<echo message=" available targets are:"/>
+		<echo message=""/>
+		<echo message=" compile   --&gt; generates the ${app.name}.jar file"/>
+		<echo message=" bin       --&gt; generates a binary distribution"/>
+		<echo message=" src       --&gt; generates a source distribution"/>
+		<echo message=" doc       --&gt; generates all documentation"/>
+		<echo message=" clean     --&gt; cleans everything up"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Prepares for any type of build =================== -->
+	<target depends="init" name="prepare">
+		<mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.messages}"/>
+    <copy todir="${build.messages}">
+      <fileset dir="${messages.dir}">
+        <include name="**/messages.*"/>
+      </fileset>
+    </copy>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Prepares the documentation ======================= -->
+	<target depends="prepare" name="prepare-doc">
+		<mkdir dir="${build.docs}"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Prepares the source distribution ================= -->
+	<target depends="prepare" name="prepare-src">
+		<mkdir dir="${build.src}"/>
+		<copy todir="${build.src}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.java"/>
+				<include name="**/*.props"/>
+				<include name="**/*.properties"/>
+				<include name="**/properties"/>
+				<include name="**/*.jpg"/>
+				<include name="**/*.png"/>
+			</fileset>
+		</copy>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Compiles the program ============================= -->
+	<target depends="prepare-src" name="compile" description="compile Source View">
+		<mkdir dir="${build.dest}"/>
+		<javac debug="${javac.debug}" deprecation="${javac.deprecation}" includeJavaRuntime="${javac.include.runtime}" optimize="${javac.optimize}" source="${javac.source}" destdir="${build.dest}" srcdir="${build.src}">
+			<classpath refid="classpath"/>
+			<include name="**/*.java"/>
+		</javac>
+		<copy todir="${build.dest}">
+			<fileset dir="${build.src}">
+				<include name="**/*.props"/>
+				<include name="**/*.properties"/>
+				<include name="**/properties"/>
+				<include name="**/*.jpg"/>
+				<include name="**/*.png"/>
+			</fileset>
+		</copy>
+		
+    <!-- copy dependencies file -->
+    <copy file="dependency.props" todir="${build.dest}"/>
+    
+    <!-- create jar manifest -->
+    <manifest file="${root.dir}/${app.name}.manifest">
+      <attribute name="Built-By" value="${user.name}"/>
+      <attribute name="Main-Class" value="${main.class}"/>
+      <section name="common">
+        <attribute name="Implementation-Title" value="${app.name}"/>
+        <attribute name="Implementation-Version" value="${implementation.version}"/>
+        <!-- plugin attributes -->
+        <attribute name="jsxe-plugin-name" value="${app.name}"/>
+        <attribute name="jsxe-plugin-human-readable-name" value="${readable.name}"/>
+        <attribute name="jsxe-plugin-version" value="${implementation.version}"/>
+        <attribute name="jsxe-plugin-url" value="http://jsxe.sourceforge.net/"/>
+        <attribute name="jsxe-plugin-class" value="${main.class}"/>
+        <attribute name="jsxe-plugin-description" value="${description}"/>
+      </section>
+    </manifest>
+    
+		<jar jarfile="${root.dir}/../${app.name}.jar" manifest="${app.name}.manifest">
+			<fileset dir="${build.dir}">
+        <include name="messages/messages.*"/>
+      </fileset>
+      <fileset dir="${build.dest}">
+				<include name="**/*.class"/>
+				<include name="**/properties"/>
+				<include name="**/*.props"/>
+				<include name="**/*.properties"/>
+				<include name="**/*.jpg"/>
+				<include name="**/*.png"/>
+			</fileset>
+		</jar>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Prepares for a build ============================= -->
+	<target depends="init" name="prepare-build">
+		
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Generates the documentation ====================== -->
+	<target depends="prepare-doc, prepare-src" name="doc">
+		<copy file="COPYING" tofile="${build.dir}/doc/COPYING"/>
+		<copy file="README" tofile="${build.dir}/doc/README"/>
+		<copy file="TODO" tofile="${build.dir}/doc/TODO"/>
+		<copy file="Changelog" tofile="${build.dir}/doc/Changelog"/>
+		<javadoc author="true" destdir="${build.javadocs}" doctitle="${app.name} ${app.version} API" link="${javadoc.link}" locale="en_US" packagenames="*" sourcepath="${build.src}" version="true" windowtitle="${app.name} ${app.version} API"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Generates the binary distribution ================ -->
+	<target depends="compile, prepare-build, doc" name="bin" description="Build binary distribution">
+		<!-- doc -->
+		<mkdir dir="${distbin.dir}/doc"/>
+		<copy todir="${distbin.dir}/doc">
+			<fileset dir="${build.docs}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<copy file="${app.name}.jar" tofile="${distbin.dir}/${app.name}.jar"/>
+		<zip basedir="${build.dir}" excludes="*.class" includes="${app.name}-${app_version}-bin/**" zipfile="${build.dir}/${app.name}-${app_version}-bin.zip"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Generates the source distribution ================ -->
+	<target depends="prepare-build, prepare-src, doc" name="src" description="Build source distribution">
+		<!-- doc -->
+		<mkdir dir="${distsrc.dir}/doc"/>
+		<copy todir="${distsrc.dir}/doc">
+			<fileset dir="${build.docs}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+    <!-- build files -->
+    <copy todir="${distsrc.dir}">
+      <fileset dir="${build.src}">
+        <include name="build.xml"/>
+        <include name="${app.name}.manifest"/>
+      </fileset>
+    </copy>
+		<!-- src -->
+		<mkdir dir="${distsrc.dir}/src"/>
+		<copy todir="${distsrc.dir}/src">
+			<fileset dir="${build.src}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+    <!-- messages -->
+    <mkdir dir="${distsrc.dir}/messages"/>
+		<copy todir="${distsrc.dir}/messages">
+			<fileset dir="${build.messages}">
+				<include name="**/messages.*"/>
+			</fileset>
+		</copy>
+    
+		<zip basedir="${build.dir}" excludes="*.class" includes="${app.name}-${app_version}-src/**" zipfile="${build.dir}/${app.name}-${app_version}-src.zip"/>
+	</target>
+	<!-- }}} -->
+	<!-- {{{ ============ Cleans everything up ============================= -->
+	<target depends="init" name="clean" description="Clean up distribution tree">
+		<delete dir="${build.dir}"/>
+    <delete>
+			<fileset dir="${root.dir}/.." includes="${app.name}.jar"/>
+      <fileset dir="${root.dir}" includes="${app.name}.manifest"/>
+			<fileset dir="${root.dir}" includes="**/*.class"/>
+			<fileset dir="${root.dir}" includes="**/*.rej"/>
+			<fileset dir="${root.dir}" includes="**/*.orig"/>
+			<fileset dir="${root.dir}" includes="**/.*.swp"/>
+			<fileset dir="${root.dir}" includes="**/.#*"/>
+			<fileset dir="${root.dir}" includes="**/.new*"/>
+			<fileset dir="${root.dir}" includes="**/.directory"/>
+			<fileset dir="${root.dir}" includes="**/.xvpics"/>
+		</delete>
+	</target>
+	<!-- }}} -->
+</project>

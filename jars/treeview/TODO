@@ -1,0 +1,57 @@
+TODO:
+
+* Version 0.4 beta (Actions)
+    
+    * Add a "trim whitespace in text nodes" option.
+    
+    * Implement cut, copy, paste
+    
+    * Fully implement gui actions to include key mnemonics etc. so the actions
+      act like you would expect. Allow users to define keys shortcuts to
+      actions.
+    
+    * By this time, make sure all classes are documented with javadoc.
+    
+    * Make sure all instance variables are prefixed with m_ and are named in a
+      consistent manner.
+      
+* Version 0.5 beta (DTD support and Threading)
+    
+    * Add support for DTDs and Schema and add feedback about whether the
+      current document can be validated by the DTD and what needs to be done to
+      the document before it will comply with the DTD. Create interfaces to
+      coincide with the XMLDocument interfaces that handles various Schema.
+        * Look at some projects that convert DTD to Schema. This may be useful
+          so that DTDs can be edited as Schema. Is that possible? DTDs seem to
+          have features that aren't in Schema and don't translate at all.
+        * Look at the XML plugin for jEdit for ways of finding what nodes can
+          be inserted at various locations in the document.
+    
+* Version 0.6 beta (GUI focus)
+    
+    * Add a ghosted image of the node to drag and drop cursor. Hopefully the
+      whole cursor can be replaced with the image since the default drag
+      cursor is dumb in linux.
+    
+* Version 0.7 beta
+    
+    * Build into the interfaces support for printing. Implement printing
+      support in the Default View and SourceView
+    
+    * Look for ways to improve efficiency with large XML documents
+    
+    * Add support for dependency tracking of plugins. Some plugins may be
+      dependent on others and so this may affect the order that they are
+      loaded and error checking.
+    
+* Version 0.8 beta
+
+    * Bug fixes?
+
+* Version 0.9 beta
+
+    * Bug fixes?
+
+* Version 1.0
+
+    * Bug fixes?

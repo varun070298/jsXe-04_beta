@@ -1,0 +1,23 @@
+# JSXE tree view German properties file
+# $Id: messages.de,v 1.1 2006/02/02 20:49:56 ian_lewis Exp $
+# Maintained by Bianca Shöen
+#:mode=properties:
+#:tabSize=4:indentSize=4:noTabs=true:
+#:folding=explicit:collapseFolds=1:
+
+
+#{{{ TreeView
+TreeView.Options.Title=Tree View Optionen
+TreeView.Options.Show.Comments=Kommentar Knoten anzeigen
+TreeView.Options.Show.Comments.ToolTip =Beim Deaktivieren werden s�mtliche Kommentare in der momentan ge�ffneten XML Datei ausgeblendet.
+TreeView.Options.Continuous.Layout=Durchg�ngiges Layout f�r split-panes
+TreeView.Options.Continuous.Layout.ToolTip =<HTML>Dies beeinflusst das Aussehen des vertikalen Balkens in der Mitte des jsXE Screens.<BR>Ist dieses Auswahlk�stchen nicht ausgew�hlt w�hrend der vertikale Balken vor und zur�ck �ber den Screen <BR>gezogen wird, bewegt er sich ohne Umst�nde.<BR>Ist dieses Auswahlk�stchen nicht aktiviert w�hrend der vertikale Balken verschoben wird, ver�ndert er sich in <BR>eine dicke schwarze Linie.</HTML>
+TreeView.Options.Show.Attributes=Show element attributes in tree:
+TreeView.Options.Show.Attributes.ToolTip =<HTML>Diese Option verlaubt es, die XML Datei auf verschiedene Arten anzuzeigen. <BR><ul><li><strong>Keine</strong> - blendet alle Attribut-Informationen der Datei aus. </li><li><strong>Nur ID</strong> - nur Attribut-Informationen, die zu einem XML Element mit ID geh�ren, werden angezeigt.</li><li><strong>Alle</strong> - alle Attribut-Informationen werden angezeigt.</li></ul><HTML>
+TreeView.RenameNode=Knoten umbenennen
+TreeView.RemoveNode=Knoten entfernen
+TreeView.AddAttribute=Attribut hinzuf�gen
+TreeView.RemoveAttribute=Attribut entfernen
+TreeView.EditNode=Knoten bearbeiten
+Edit.Node.Dialog.Title=Knoten bearbeitenn
+#}}}
